@@ -66,19 +66,20 @@ class App extends Component {
                         exact
                         key={path}
                         path={path}
-                        render={routeProps => {
-                            const { folderId } = routeProps.match.params;
-                            const notesForFolder = getNotesForFolder(
-                                notes,
-                                folderId
-                            );
-                            return (
-                                <NoteListMain
-                                    {...routeProps}
-                                    notes={notesForFolder}
-                                />
-                            );
-                        }}
+                        // render={routeProps => {
+                        //     const { folderId } = routeProps.match.params;
+                        //     const notesForFolder = getNotesForFolder(
+                        //         notes,
+                        //         folderId
+                        //     );
+                        //     return (
+                        //         <NoteListMain
+                        //             {...routeProps}
+                        //             notes={notesForFolder}
+                        //         />
+                        //     );
+                        // }}
+                        component={NoteListMain}
                     />
                 ))}
                 <Route
@@ -94,16 +95,12 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.props.match.params.noteId)
         return (
             <div className="App">
                 <NotefulContext.Provider value={
                     {
                         notes: this.state.notes,
                         folders: this.state.folders,
-                        hotFolder: '',
-                        findNote: this.findNote,
-                        findFolder: this.findFolder
                     }
                 }>
                     <nav className="App__nav">{this.renderNavRoutes()}</nav>
