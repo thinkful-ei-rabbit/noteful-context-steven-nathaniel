@@ -1,9 +1,13 @@
 import React from 'react'
 import Note from '../Note/Note'
 import './NotePageMain.css'
+import NotefulContext from '../NotefulContext'
 
 export default function NotePageMain(props) {
   return (
+    // <NotefulContext.Consumer>
+    //   {(value) => {
+    //     return (
     <section className='NotePageMain'>
       <Note
         id={props.note.id}
@@ -16,6 +20,9 @@ export default function NotePageMain(props) {
         )}
       </div>
     </section>
+    //    );
+    //   }};
+    // </NotefulContext.Consumer>
   )
 }
 
